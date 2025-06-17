@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home - Grand Vista Hotel</title>
+
+  <!-- LINKS TO ALL USED RESOURCES -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="responsive.css" />
+  <link rel="shortcut icon" href="GV logo.ico" type="image/x-icon" />
+</head>
+
+<body>
+  <!-- Main Navbar -->
+  <header class="header">
+    <nav class="navbar">
+      <div class="logo">
+        <a href="index.html">Grand Vista Hotel</a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="https://grandvistahotel.unaux.com/" class="active">Home</a></li>
+        <li id="rooms-href"><a href="https://grandvistahotel.unaux.com/#rooms-btn">Rooms</a></li>
+        <li><a href="booking.php">Booking</a></li>
+        <li><a href="contact.php">Contact</a></li>
+      </ul>
+
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav>
+  </header>
+
+  <!-- HEADER -->
+
+  <section class="carousel">
+    <div class="carousel-track" id="carouselTrack">
+      <div class="carousel-slide" style="
+            background-image: url('https://images.unsplash.com/photo-1709464973748-15ca6633f436?q=80&w=2062&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+          ">
+        <div class="overlay">
+          <div class="fade-in">
+            <h1>Welcome to GRAND VISTA HOTEL</h1>
+            <p style="font-size: 1.2rem">Discover comfort and elegance in every detail</p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-slide" style="
+            background-image: url('https://images.unsplash.com/photo-1689729739836-7fcc2c84d788?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+          ">
+        <div class="overlay fade-in">
+          <div>
+            <h1 style="font-size: 3rem">
+              Discover Hotels That Feel Like Home—Anywhere You Go!
+            </h1>
+            <p>Comfort, quality, and convenience in every stay</p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-slide" style="
+            background-image: url('https://images.unsplash.com/photo-1575429198097-0414ec08e8cd?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+          ">
+        <div class="overlay">
+          <div>
+            <h1 style="font-size: 4.5rem">Our Luxurious Rooms</h1>
+            <p>Discover comfort and elegance in every detail</p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-slide" style="
+            background-image: url('https://images.unsplash.com/photo-1619301617112-6b676fb93268?q=80&w=1999&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+          ">
+        <div class="overlay">
+          <div>
+            <h1 style="font-size: 3.5rem">Stay Grand. Stay Vista!</h1>
+            <p style="font-size: 1.5rem">
+              Modern luxury meets timeless hospitality
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="indicators" id="indicators"></div>
+  </section>
+
+  <!-- Rooms Section -->
+  <section class="rooms-section">
+    <div class="container">
+      <!-- Room Filters -->
+      <div class="room-filters">
+        <button class="filter-btn active" data-filter="all" id="rooms-btn">All Rooms</button>
+        <button class="filter-btn" data-filter="standard">Standard</button>
+        <button class="filter-btn" data-filter="deluxe">Deluxe</button>
+        <button class="filter-btn" data-filter="suite">Suites</button>
+      </div>
+
+      <!-- Rooms Grid -->
+      <div class="rooms-grid-detailed">
+        <!-- Standard Room -->
+        <div class="room-card-detailed" data-category="standard">
+          <div class="room-images">
+            <div class="main-image" style="
+                  background-image: url('https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80');
+                "></div>
+            <div class="room-thumbnails">
+              <div class="thumbnail active" style="
+                    background-image: url('https://images.unsplash.com/photo-1648383228240-6ed939727ad6?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+                  "></div>
+              <div class="thumbnail" style="
+                    background-image: url('https://plus.unsplash.com/premium_photo-1745337150305-a7fadd0fa1f9?q=80&w=2073&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+                  "></div>
+              <div class="thumbnail" style="
+                    background-image: url('https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+                  "></div>
+              <div class="thumbnail" style="
+                    background-image: url('https://images.unsplash.com/photo-1564329471042-7b3bfa3c51c1?q=80&w=2018&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+                  "></div>
+            </div>
+          </div>
+          <div class="room-details">
+            <div class="room-header">
+              <h3>Standard Room</h3>
+              <div class="room-price">₹999<span>/night</span></div>
+            </div>
+            <p class="room-description">
+              Our Standard Rooms offer the perfect blend of comfort and style.
+              Each room is thoughtfully designed with modern amenities and
+              elegant furnishings to ensure a pleasant stay.
+            </p>
+            <div class="room-amenities">
+              <div class="amenity">
+                <i class="fas fa-bed"></i>
+                <span>Queen Bed</span>
+              </div>
+              <div class="amenity">
+                <i class="fas fa-users"></i>
+                <span>2 Guests</span>
+              </div>
+              <div class="amenity">
+                <i class="fas fa-expand"></i>
+                <span>30 m²</span>
+              </div>
+              <div class="amenity">
+                <i class="fas fa-wifi"></i>
+                <span>Free WiFi</span>
+              </div>
+              <div class="amenity">
+                <i class="fas fa-tv"></i>
+                <span>Smart TV</span>
+              </div>
+              <div class="amenity">
+                <i class="fas fa-snowflake"></i>
+                <span>Air Conditioning</span>
+              </div>
+            </div>
+            <div class="room-actions">
+              <button class="btn-secondary view-details" data-room="standard">
+                View Details
+              </button>
+              <a href="booking.php#direct_booking"><button class="btn-primary book-now">
+                  Book Now
+                </button></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Deluxe Suite -->
+        <div class="room-card-detailed" data-category="deluxe">
+          <div class="room-images">
+            <div class="main-image" style="
+                  background-image: url('https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80');
+                "></div>
+            <div class="room-thumbnails">
+              <div class="thumbnail active" style="
+                    background-image: url('https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+                  "></div>
+              <div class="thumbnail" style="
+                    background-image: url('https://images.pexels.com/photos/2889618/pexels-photo-2889618.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+                  "></div>
+              <div class="thumbnail" style="
+                    background-image: url('https://plus.unsplash.com/premium_photo-1663091257768-8f089bf6b4fa?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+                  "></div>
+              <div class="thumbnail" style="
+                    background-image: url('https://images.unsplash.com/photo-1725623831897-fb009acfe742?q=80&w=2075&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+                  "></div>
+            </div>
+          </div>
+          <div class="room-details">
+            <div class="room-header">
+              <h3>Deluxe Suite</h3>
+              <div class="room-price">₹1999<span>/night</span></div>
+            </div>
+            <p class="room-description">
+              Experience luxury in our Deluxe Suites featuring separate living
+              areas, premium amenities, and stunning city views. Perfect for
+              business travelers and romantic getaways.
+            </p>
+            <div class="room-amenities">
+              <div class="amenity">
+                <i class="fas fa-bed"></i>
+                <span>King Bed</span>
+              </div>
+              <div class="amenity">
+                <i class="fas fa-users"></i>
+                <span>3 Guests</span>
+              </div>
+              <div class="amenity">
+                <i class="fas fa-expand"></i>
+                <span>45 m²</span>
+              </div>
+              <div class="amenity">
+                <i class="fas fa-couch"></i>
+                <span>Living Area</span>
+              </div>
+              <div class="amenity">
+                <i class="fas fa-bath"></i>
+                <span>Luxury Bathroom</span>
+              </div>
+              <div class="amenity">
+                <i class="fas fa-city"></i>
+                <span>City View</span>
+              </div>
+            </div>
+            <div class="room-actions">
+              <button class="btn-secondary view-details" data-room="deluxe">
+                View Details
+              </button>
+              <a href="booking.php#direct_booking"><button class="btn-primary book-now">
+                  Book Now
+                </button></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Presidential Suite -->
+        <div class="room-card-detailed" data-category="suite">
+          <div class="room-images">
+            <div class="main-image" style="
+                  background-image: url('https://images.unsplash.com/photo-1618773928121-c32242e63f39?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80');
+                "></div>
+            <div class="room-thumbnails">
+              <div class="thumbnail active" style="
+                    background-image: url('https://images.unsplash.com/photo-1702675301342-cac2dc3ef15a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+                  "></div>
+              <div class="thumbnail" style="
+                    background-image: url('https://images.pexels.com/photos/2134224/pexels-photo-2134224.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+                  "></div>
+              <div class="thumbnail" style="
+                    background-image: url('https://images.pexels.com/photos/3316922/pexels-photo-3316922.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+                  "></div>
+              <div class="thumbnail" style="
+                    background-image: url('https://images.unsplash.com/photo-1582484983984-1a930896da01?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+                  "></div>
+            </div>
+          </div>
+          <div class="room-details">
+            <div class="room-header">
+              <h3>Presidential Suite</h3>
+              <div class="room-price">₹1299<span>/night</span></div>
+            </div>
+            <p class="room-description">
+              The epitome of luxury and sophistication. Our Presidential Suite
+              offers unparalleled comfort with panoramic city views, premium
+              amenities, and exclusive concierge services.
+            </p>
+            <div class="room-amenities">
+              <div class="amenity">
+                <i class="fas fa-bed"></i>
+                <span>King Bed</span>
+              </div>
+              <div class="amenity">
+                <i class="fas fa-users"></i>
+                <span>4 Guests</span>
+              </div>
+              <div class="amenity">
+                <i class="fas fa-expand"></i>
+                <span>80 m²</span>
+              </div>
+              <div class="amenity">
+                <i class="fas fa-utensils"></i>
+                <span>Premium Kitchen Services</span>
+              </div>
+              <div class="amenity">
+                <i class="fas fa-hot-tub"></i>
+                <span>Jacuzzi</span>
+              </div>
+              <div class="amenity">
+                <i class="fas fa-concierge-bell"></i>
+                <span>Butler Service</span>
+              </div>
+            </div>
+            <div class="room-actions">
+              <button class="btn-secondary view-details" data-room="presidential">
+                View Details
+              </button>
+              <a href="booking.php#direct_booking"><button class="btn-primary book-now">
+                  Book Now
+                </button></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Executive Room -->
+        <div class="room-card-detailed" data-category="deluxe">
+          <div class="room-images">
+            <div class="main-image" style="
+                  background-image: url('https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80');
+                "></div>
+            <div class="room-thumbnails">
+              <div class="thumbnail active" style="
+                    background-image: url('https://images.pexels.com/photos/189333/pexels-photo-189333.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+                  "></div>
+              <div class="thumbnail" style="
+                    background-image: url('https://images.pexels.com/photos/2506990/pexels-photo-2506990.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+                  "></div>
+              <div class="thumbnail" style="
+                    background-image: url('https://images.unsplash.com/photo-1725962269029-e845b85e5ebf?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D0');
+                  "></div>
+              <div class="thumbnail" style="
+                    background-image: url('https://images.unsplash.com/photo-1735385262843-3f0e0450b515?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+                  "></div>
+            </div>
+          </div>
+          <div class="room-details">
+            <div class="room-header">
+              <h3>Executive Room</h3>
+              <div class="room-price">₹2999<span>/night</span></div>
+            </div>
+            <p class="room-description">
+              Designed for business travelers, our Executive Rooms feature a
+              dedicated workspace, premium amenities, and access to the
+              executive lounge.
+            </p>
+            <div class="room-amenities">
+              <div class="amenity">
+                <i class="fas fa-bed"></i>
+                <span>Queen Bed</span>
+              </div>
+              <div class="amenity">
+                <i class="fas fa-users"></i>
+                <span>5 Guests</span>
+              </div>
+              <div class="amenity">
+                <i class="fas fa-expand"></i>
+                <span>35 m²</span>
+              </div>
+              <div class="amenity">
+                <i class="fas fa-laptop"></i>
+                <span>Work Desk</span>
+              </div>
+              <div class="amenity">
+                <i class="fas fa-coffee"></i>
+                <span>Lounge Access</span>
+              </div>
+              <div class="amenity">
+                <i class="fas fa-newspaper"></i>
+                <span>Daily Newspaper</span>
+              </div>
+            </div>
+            <div class="room-actions">
+              <button class="btn-secondary view-details" data-room="executive">
+                View Details
+              </button>
+              <a href="booking.php#direct_booking"><button class="btn-primary book-now">
+                  Book Now
+                </button></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Room Details  -->
+  <div class="modal" id="roomModal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <div class="modal-body">
+        <div class="modal-images">
+          <div class="modal-main-image" id="modalMainImage"></div>
+          <div class="modal-thumbnails" id="modalThumbnails"></div>
+        </div>
+        <div class="modal-details">
+          <h2 id="modalRoomTitle"></h2>
+          <div class="modal-price" id="modalRoomPrice"></div>
+          <p id="modalRoomDescription"></p>
+          <div class="modal-amenities" id="modalAmenities"></div>
+          <div class="modal-actions">
+            <a href="booking.php#direct_booking"><button class="btn-primary" id="modalBookBtn">Book Now</button> </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer page-->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Grand Vista Hotel</h3>
+          <p>
+            Experience the pinnacle of luxury and comfort in the heart of the
+            city.
+          </p>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="footer-section">
+          <h3>Contact Info</h3>
+          <p>
+            <i class="fas fa-map-marker-alt"></i>
+            <a href="contact.php#mapG_heading">Grand Vista Hotel, City Center</a>
+          </p>
+          <p><i class="fas fa-phone"></i> +91 9898989898</p>
+          <p><i class="fas fa-envelope"></i> info@grandvistahotel.com</p>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="https://grandvistahotel.unaux.com/#rooms-btn">Our Rooms</a></li>
+            <li><a href="booking.php">Book Now</a></li>
+            <li><a href="contact.php">Contact Us</a></li>
+            <li><a href="#">Gallery</a></li>
+            <li><a href="contact.php">Reviews</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Services</h3>
+          <ul>
+            <li><a href="#">Room Service</a></li>
+            <li><a href="#">Spa & Wellness</a></li>
+            <li><a href="#">Business Center</a></li>
+            <li><a href="#">Event Spaces</a></li>
+            <li><a href="#">Airport Transfer</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024-25 Grand Vista Hotel. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
+    crossorigin="anonymous"></script>
+  <!-- bootsrtap js -->
+</body>
+
+</html>
