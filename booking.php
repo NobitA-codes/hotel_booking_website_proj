@@ -1,10 +1,10 @@
 <?php
 // Database connection
 function connectDatabase() {
-    $servername = "sql201.ezyro.com";
-    $username = "ezyro_39240808";
-    $password = "70ae97057c9d";
-    $database = "ezyro_39240808_booking_db";
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $database = "userbookings";
 
     try {
         $conn = new mysqli($servername, $username, $password, $database);
@@ -107,7 +107,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             throw new Exception("Prepare failed: " . $conn->error);
         }
         
-        // Bind parameters (correct parameter types)
+        // Bind parameters 
         $stmt->bind_param("sssssssiid", 
             $firstName,
             $lastName, 
@@ -495,8 +495,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <nav class="navbar">
             <div class="logo"><a href="index.html">Grand Vista Hotel</a></div>
             <ul class="nav-links" style="font-family:var(--font-third);">
-                <li><a href="https://grandvistahotel.unaux.com/"></div>Home</a></li>
-                <li id="rooms-href"><a href="https://grandvistahotel.unaux.com/#rooms-btn">Rooms</a></li>
+                <li><a href="index.html"></div>Home</a></li>
+                <li id="rooms-href"><a href="index.html#rooms-btn">Rooms</a></li>
                 <li><a href="booking.php" class="active">Booking</a></li>
                 <li><a href="contact.php">Contact</a></li>
             </ul>
@@ -643,7 +643,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <div class="footer-section">
                 <h3>Quick Links</h3>
                 <ul>
-                    <li><a href="https://grandvistahotel.unaux.com/#rooms-btn">Our Rooms</a></li>
+                    <li><a href="index.html#rooms-btn">Our Rooms</a></li>
                     <li><a href="booking.php">Book Now</a></li>
                     <li><a href="contact.php">Contact Us</a></li>
                     <li><a href="#">Gallery</a></li>

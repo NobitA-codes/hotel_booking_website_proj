@@ -1,10 +1,10 @@
 <?php
 // Database connection//
 $db_config = [
-    'host' => 'sql201.ezyro.com',
-    'username' => 'ezyro_39240808',
-    'password' => '70ae97057c9d',
-    'database' => 'ezyro_39240808_contact_here'
+    'host' => 'localhost',
+    'username' => 'root',
+    'password' => '',
+    'database' => 'contacthere'
 ]; 
 
 $response = ['success' => false, 'message' => '', 'errors' => []];
@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             );
             
             $stmt = $pdo->prepare("
-                INSERT INTO contact_messages (name, email, phone, subject, message, created_at, ip_address) 
+                INSERT INTO contactdb (name, email, phone, subject, message, created_at, ip_address) 
                 VALUES (?, ?, ?, ?, ?, NOW(), ?)
             ");
             
@@ -112,6 +112,95 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             color: var(--text-dark);
             background-color:var(--)
        }
+      /* Main Content */
+      .page-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+
+      .page-title {
+        text-align: center;
+        font-family: "Playfair Display", serif;
+        font-size: 3rem;
+        font-weight: 600;
+        color: #2c3e50;
+        margin: 2rem 0;
+      }
+
+      .page-subtitle {
+        text-align: center;
+        font-size: 1.1rem;
+        color: var(--text-light);
+        margin-bottom: 3rem;
+      }
+
+      /* Contact Section */
+      .contact-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        margin-bottom: 4rem;
+      }
+
+      .contact-info {
+        background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        padding: 2.5rem;
+        border-radius: 15px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+      }
+
+      .contact-info h3 {
+        font-family: "Playfair Display", serif;
+        font-size: 1.8rem;
+        color: var(--primary-color);
+        margin-bottom: 1.5rem;
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1.5rem;
+      }
+
+      .contact-item i {
+        font-size: 1.2rem;
+        color: var(--secondary-color);
+        margin-right: 1rem;
+        width: 20px;
+      }
+
+      .contact-item span {
+        font-size: 1rem;
+        color: var(--text-dark);
+      }
+      
+      .contact-form {
+        background: white;
+        padding: 2.5rem;
+        border-radius: 15px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        border: 1px solid #e9ecef;
+      }
+      
+           .btn-submit {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 100%;
+        }
+        
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(184, 134, 11, 0.3);
+        }
+
       /* Alert Styles */
       .alert {
         padding: 1rem 1.5rem;
@@ -166,9 +255,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
           <a href="index.html">Grand Vista Hotel</a>
         </div>
         <ul class="nav-links">
-          <li><a href="https://grandvistahotel.unaux.com/">Home</a></li>
+          <li><a href="index.html">Home</a></li>
           <li>
-            <a href="https://grandvistahotel.unaux.com/#rooms-btn">Rooms</a>
+            <a href="index.html#rooms-btn">Rooms</a>
           </li>
           <li><a href="booking.php">Booking</a></li>
           <li><a href="contact.php" class="active">Contact</a></li>
@@ -186,6 +275,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
       <!-- Contact Section -->
       <div class="contact-container">
+        <!-- Contact Information -->
         <div class="contact-info">
           <h3>Contact Information</h3>
 
@@ -346,9 +436,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         <div class="footer-section">
           <h3>Contact Info</h3>
-          <p>
-            <i class="fas fa-map-marker-alt"></i> Grand Vista Hotel, City Center
-          </p>
+         <p><i class="fas fa-map-marker-alt"></i><a href="contact.php#mapG_heading">Grand Vista Hotel, City Center</a></p>
           <p><i class="fas fa-phone"></i> +91 9898989898</p>
           <p><i class="fas fa-envelope"></i> info@grandvistahotel.com</p>
         </div>
@@ -357,7 +445,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
           <h3>Quick Links</h3>
           <ul>
             <li>
-              <a href="https://grandvistahotel.unaux.com/#rooms-btn"
+              <a href="index.html#rooms-btn"
                 >Our Rooms</a
               >
             </li>
