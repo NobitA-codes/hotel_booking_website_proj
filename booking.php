@@ -301,6 +301,87 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             text-decoration: none;
         }
 
+        /* Price Preview Card */
+        .price-preview {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: var(--spacing-md);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            margin-top: var(--spacing-md);
+        }
+
+        .price-preview.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .price-preview h3 {
+            color: white;
+            margin-bottom: var(--spacing-md);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            font-size: 1.3rem;
+        }
+
+        .price-preview h3 i {
+            color: #f39c12;
+        }
+
+        .price-details {
+            display: grid;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--spacing-xs) 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .price-row:last-child {
+            border-bottom: none;
+        }
+
+        .price-label {
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .price-value {
+            font-weight: 600;
+            color: white;
+        }
+
+        .total-price {
+            background: rgba(255, 255, 255, 0.1);
+            padding: var(--spacing-md);
+            border-radius: var(--radius-md);
+            margin-top: var(--spacing-md);
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .total-price .amount {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #f39c12;
+            display: block;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .total-price .duration {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
         /* Booking Form */
         .booking-form {
             background: white;
@@ -387,10 +468,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3);
         }
 
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
         /* Room Selection */
         .room-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: var(--spacing-md);
             margin-top: var(--spacing-md);
         }
@@ -416,16 +503,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
 
         .room-option h4 {
+            font-family: 'Poppins', serif;
             color: var(--neutral-dark);
             margin-bottom: var(--spacing-sm);
-            font-size: clamp(1rem, 1.5vw, 1.1rem);
+            font-size: clamp(1.2rem, 1.5vw, 1.3rem);
             text-align: center;
         }
 
         .room-price {
             color: var(--secondary-color);
             font-weight: 600;
-            font-size: clamp(1rem, 1.5vw, 1.1rem);
+            font-size: clamp(1.3rem, 1.8vw, 1.4rem);
             text-align: center;
         }
 
@@ -486,6 +574,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 gap: var(--spacing-sm);
             }
         }
+
+        /* Animation keyframes */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
     </style>
 </head>
 
@@ -495,7 +595,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <nav class="navbar">
             <div class="logo"><a href="index.html">Grand Vista Hotel</a></div>
             <ul class="nav-links" style="font-family:var(--font-third);">
-                <li><a href="index.html"></div>Home</a></li>
+                <li><a href="index.html">Home</a></li>
                 <li id="rooms-href"><a href="index.html#rooms-btn">Rooms</a></li>
                 <li><a href="booking.php" class="active">Booking</a></li>
                 <li><a href="contact.php">Contact</a></li>
@@ -533,6 +633,45 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <p><i class="fas fa-phone"></i>Contact Us Here</p>
                 </a>
                 <p><i class="fas fa-envelope"></i>reservations@grandvistahotel.com</p>
+            </div>
+            
+            <!-- Price Preview Card -->
+            <div class="price-preview" id="pricePreview">
+                <h3><i class="fas fa-calculator"></i>Booking Summary</h3>
+                <div class="price-details"> 
+                    <div class="price-row">
+                        <span class="price-label">Guest Name:</span>
+                        <span class="price-value" id="guestName">-</span>
+                    </div>
+                    <div class="price-row">
+                        <span class="price-label">Check-in:</span>
+                        <span class="price-value" id="checkinDisplay">-</span>
+                    </div>  
+                    <div class="price-row">
+                        <span class="price-label">Check-out:</span>
+                        <span class="price-value" id="checkoutDisplay">-</span>
+                    </div>
+                    <div class="price-row">
+                        <span class="price-label">Room Type:</span>
+                        <span class="price-value" id="roomTypeDisplay">-</span>
+                    </div>
+                    <div class="price-row">
+                        <span class="price-label">Number of Rooms:</span>
+                        <span class="price-value" id="roomsDisplay">-</span>
+                    </div>
+                    <div class="price-row">
+                        <span class="price-label">Nights:</span>
+                        <span class="price-value" id="nightsDisplay">-</span>
+                    </div>
+                    <div class="price-row">
+                        <span class="price-label">Price per Room/Night:</span>
+                        <span class="price-value" id="roomPriceDisplay">-</span>
+                    </div>
+                </div>
+                <div class="total-price">
+                    <span class="amount" id="totalAmount">₹0</span>
+                    <span class="duration" id="totalDuration">Total Amount to be PAID</span>
+                </div>
             </div>
         </div>
 
@@ -575,7 +714,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <div class="form-group">
                         <label for="guests">Number of Guests *</label>
                         <select id="guests" name="guests" required>
-                            <option value="">Select guests</option>
+                            <option  value="" disabled>Select guests</option>
                             <option value="1">1 Guest</option>
                             <option value="2">2 Guests</option>
                             <option value="3">3 Guests</option>
@@ -586,7 +725,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <div class="form-group">
                         <label for="rooms">Number of Rooms *</label>
                         <select id="rooms" name="rooms" required>
-                            <option value="">Select rooms</option>
+                            <option value="" disabled>Select rooms</option>
                             <option value="1">1 Room</option>
                             <option value="2">2 Rooms</option>
                             <option value="3">3 Rooms</option>
@@ -667,18 +806,182 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </footer>
 
     <script>
-        // Room selection functionality
+        // Room selection details
         const roomOptions = document.querySelectorAll('.room-option');
         const roomTypeInput = document.getElementById('roomType');
+        const pricePreview = document.getElementById('pricePreview');
+        
+        // Form elements data
+        const firstNameInput = document.getElementById('firstName');
+        const lastNameInput = document.getElementById('lastName');
+        const checkinInput = document.getElementById('checkin');
+        const checkoutInput = document.getElementById('checkout');
+        const roomsInput = document.getElementById('rooms');
+        
+        // Display elements data
+        const guestName = document.getElementById('guestName');
+        const checkinDisplay = document.getElementById('checkinDisplay');
+        const checkoutDisplay = document.getElementById('checkoutDisplay');
+        const roomTypeDisplay = document.getElementById('roomTypeDisplay');
+        const roomsDisplay = document.getElementById('roomsDisplay');
+        const nightsDisplay = document.getElementById('nightsDisplay');
+        const roomPriceDisplay = document.getElementById('roomPriceDisplay');
+        const totalAmount = document.getElementById('totalAmount');
+        const totalDuration = document.getElementById('totalDuration');
 
+        // Room prices
+        const roomPrices = {
+            'standard': { price: 999, name: 'Standard Room' },
+            'deluxe': { price: 1999, name: 'Deluxe Suite' },
+            'executive': { price: 2999, name: 'Executive Room' },
+            'presidential': { price: 1299, name: 'Presidential Suite' }
+        };
+
+        let selectedRoomType = null;
+        let selectedRoomPrice = 0;
+
+        // Set minimum date to today and update checkout date accordingly
+        const today = new Date().toISOString().split('T')[0];
+        checkinInput.min = today;
+        checkoutInput.min = today;
+
+
+        checkinInput.addEventListener('change', function() {
+            const checkinDate = new Date(this.value);
+            checkinDate.setDate(checkinDate.getDate() + 1);
+            checkoutInput.min = checkinDate.toISOString().split('T')[0];
+            if (checkoutInput.value && checkoutInput.value <= this.value) {
+                checkoutInput.value = '';
+            }
+            updatePricePreview();
+        });
+
+        // Room selection functionality
         roomOptions.forEach(option => {
             option.addEventListener('click', function() {
                 roomOptions.forEach(opt => opt.classList.remove('selected'));
                 this.classList.add('selected');
-                roomTypeInput.value = this.dataset.room;
+                selectedRoomType = this.dataset.room;
+                selectedRoomPrice = parseInt(this.dataset.price);
+                roomTypeInput.value = selectedRoomType;
+                updatePricePreview();
             });
         });
+
+        // event listeners 
+        firstNameInput.addEventListener('input', updatePricePreview);
+        lastNameInput.addEventListener('input', updatePricePreview);
+        checkinInput.addEventListener('change', updatePricePreview);
+        checkoutInput.addEventListener('change', updatePricePreview);
+        roomsInput.addEventListener('change', updatePricePreview);
+
+        function updatePricePreview() {
+            const firstName = firstNameInput.value.trim();
+            const lastName = lastNameInput.value.trim();
+            const checkin = checkinInput.value;
+            const checkout = checkoutInput.value;
+            const rooms = parseInt(roomsInput.value) || 0;
+
+            // Update guest name
+            if (firstName || lastName) {
+                guestName.textContent = `${firstName} ${lastName}`.trim();
+            } else {
+                guestName.textContent = '-';
+            }
+
+            // Update dates
+            if (checkin) {
+                checkinDisplay.textContent = formatDate(checkin);
+            } else {
+                checkinDisplay.textContent = '-';
+            }
+
+            if (checkout) {
+                checkoutDisplay.textContent = formatDate(checkout);
+            } else {
+                checkoutDisplay.textContent = '-';
+            }
+
+            // Update room type
+            if (selectedRoomType && roomPrices[selectedRoomType]) {
+                roomTypeDisplay.textContent = roomPrices[selectedRoomType].name;
+                roomPriceDisplay.textContent = `₹${roomPrices[selectedRoomType].price.toLocaleString()}`;
+            } else {
+                roomTypeDisplay.textContent = '-';
+                roomPriceDisplay.textContent = '-';
+            }
+
+            // Update rooms
+            if (rooms > 0) {
+                roomsDisplay.textContent = rooms;
+            } else {
+                roomsDisplay.textContent = '-';
+            }
+
+            // Calculate total nights and total amount
+            if (checkin && checkout && selectedRoomType && rooms > 0) {
+                const checkinDate = new Date(checkin);
+                const checkoutDate = new Date(checkout);
+                const nights = Math.ceil((checkoutDate - checkinDate) / (1000 * 60 * 60 * 24));
+
+                if (nights > 0) {
+                    nightsDisplay.textContent = nights;
+                    const total = nights * selectedRoomPrice * rooms;
+                    totalAmount.textContent = `₹${total.toLocaleString()}`;
+                    totalDuration.textContent = `for ${rooms} room${rooms > 1 ? 's' : ''} for ${nights} night${nights > 1 ? 's' : ''}`;
+                } else {
+                    nightsDisplay.textContent = '-';
+                    totalAmount.textContent = '₹0';
+                    totalDuration.textContent = 'Total Amount';
+                }
+            } else {
+                nightsDisplay.textContent = '-';
+                totalAmount.textContent = '₹0';
+                totalDuration.textContent = 'Total Amount';
+            }
+
+            // Show/hide price preview
+            if (firstName || lastName || checkin || checkout || selectedRoomType || rooms > 0) {
+                pricePreview.classList.add('show');
+            } else {
+                pricePreview.classList.remove('show');
+            }
+        }
+
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            const options = { 
+                weekday: 'short', 
+                year: 'numeric', 
+                month: 'short', 
+                day: 'numeric' 
+            };
+            return date.toLocaleDateString('en-US', options);
+        }
+
+        // Form validation
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            const checkin = checkinInput.value;
+            const checkout = checkoutInput.value;
+            
+            if (checkin && checkout) {
+                const checkinDate = new Date(checkin);
+                const checkoutDate = new Date(checkout);
+                
+                if (checkoutDate <= checkinDate) {
+                    e.preventDefault();
+                    alert('Check-out date must be after check-in date.');
+                    return;
+                }
+            }
+            
+            if (!selectedRoomType) {
+                e.preventDefault();
+                alert('Please select a room type.');
+                return;
+            }
+        });
     </script>
-</body>
+</body> 
 
 </html>
